@@ -1,4 +1,4 @@
-def init_vals():
+def check_session():
     try:
         session['total_gold']
         session['activities']
@@ -15,7 +15,7 @@ def update_strings(location, add_gold):
         effect = "red"
     time = datetime.datetime.now().strftime("%Y-%m-%d[-]%H:%M:%S")
     string = "{} {} gold from the {}! ({})".format(netted, abs(add_gold), location, time)
-    session['activities'].append([effect, string])
+    session['activities'].append({effect, string})
         
 
 def gold_update(location):

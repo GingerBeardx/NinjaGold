@@ -9,7 +9,7 @@ app.secret_key = str(app.key)
 
 @app.route('/')
 def index():
-    init_vals()
+    check_session()
     return render_template('index.html', acts=session['activities'])
 
 @app.route('/process_money', methods=['POST'])
