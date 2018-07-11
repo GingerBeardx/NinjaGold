@@ -1,6 +1,6 @@
 from flask import Flask, render_template, session, redirect, request
 from utils import *
-import random, datetime
+import random
 
 app = Flask(__name__)
 app.key = random.randrange(0,15678895)
@@ -15,6 +15,7 @@ def index():
 @app.route('/process_money', methods=['POST'])
 def proc_money():
     gold_update(request.form['building'])
+    
     return redirect('/')
 
 @app.route('/reset', methods=['POST'])

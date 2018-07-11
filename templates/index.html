@@ -90,8 +90,8 @@
                 <div class="form-group col-sm-12">
                     <label for="Activity">Activities:</label><br>
                     <div class="activities form-control ">
-                        {% for class, activity in acts %}
-                            <p class="mb-0 mt-0 pb-0 pt-0 {{ class }}">{{ activity }}</p> 
+                        {% for activity in acts %}                            
+                            <p class="mb-0 mt-0 pb-0 pt-0 {{ activity.class }}">{{ activity.text }}</p> 
                         {% endfor %}
                     </div>
                 </div>

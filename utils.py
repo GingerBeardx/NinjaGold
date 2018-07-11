@@ -17,10 +17,12 @@ def update_strings(location, add_gold):
         netted = "Ouch! Played the odds and lost"
         effect = "red"
     time = datetime.datetime.now().strftime("%Y-%m-%d[-]%H:%M:%S")
-    string = "{} {} gold from the {}! ({})".format(netted, abs(add_gold), location, time)
     activity = {}
-    activity[effect] = string
+    activity['text'] = "{} {} gold from the {}! ({})".format(netted, abs(add_gold), location, time)
+    activity['class'] = effect
     session['activities'].append(activity)
+    print session['activities']
+    session.modified = True
         
 
 def gold_update(location):
