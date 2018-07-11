@@ -16,7 +16,6 @@ def update_strings(location, add_gold):
     time = datetime.datetime.now().strftime("%Y-%m-%d[-]%H:%M:%S")
     string = "{} {} gold from the {}! ({})".format(netted, abs(add_gold), location, time)
     session['activities'].append([effect, string])
-    app.count += 1
         
 
 def gold_update(location):
