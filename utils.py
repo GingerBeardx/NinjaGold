@@ -1,3 +1,6 @@
+from flask import session
+import random, datetime
+
 def check_session():
     try:
         session['total_gold']
@@ -15,7 +18,9 @@ def update_strings(location, add_gold):
         effect = "red"
     time = datetime.datetime.now().strftime("%Y-%m-%d[-]%H:%M:%S")
     string = "{} {} gold from the {}! ({})".format(netted, abs(add_gold), location, time)
-    session['activities'].append({effect, string})
+    activity = {}
+    activity[effect] = string
+    session['activities'].append(activity)
         
 
 def gold_update(location):
