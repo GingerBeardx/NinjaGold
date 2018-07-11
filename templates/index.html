@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Gold</title>
+    <!-- Using Bootstrap for CSS formatting -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" type="text/css" href="{{ 'static/style.css' }}">
+</head>
+<body>
+    <div class="container mt-3">
+        <form action="/reset" method="POST">
+            <div class="form-row mb-3">
+                <label for="total-gold" class="col-sm-2 col-form-label">Your Gold:</label>
+                <div class="col-sm-7">
+                    <p class="form-control">$ {{ session.total_gold }}</p>
+                </div>
+                <div class="col-sm-3 text-center">
+                    <input type="submit" class="btn btn-warning" value="Reset"/>
+                </div>
+            </div>
+        </form>
+        <div class="card-deck mb-3">
+            <div class="card text-center bg-light border-success">
+                <div class="card-header">
+                    Farm
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">(earns 10-20 gold)</h5>
+                    <form action="/process_money" method="POST">
+                        <input type="hidden" name="building" value="farm" />
+                        <input type="submit" class="btn btn-success" value="Find Gold!"/>
+                    </form>    
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Activity: 3 clicks ago</small>
+                </div>
+            </div>
+            <div class="card text-center bg-light border-success">
+                <div class="card-header">
+                    Cave
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">(earns 5-10 gold)</h5>
+                    <form action="/process_money" method="POST">
+                        <input type="hidden" name="building" value="cave" />
+                        <input type="submit" class="btn btn-success" value="Find Gold!"/>
+                    </form>   
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Activity: 3 clicks ago</small>
+                </div>
+            </div>
+            <div class="card text-center bg-light border-success">
+                <div class="card-header">
+                    House
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">(earns 2-5 gold)</h5>
+                    <form action="/process_money" method="POST">
+                        <input type="hidden" name="building" value="house" />
+                        <input type="submit" class="btn btn-success" value="Find Gold!"/>
+                    </form>   
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Activity: 3 clicks ago</small>
+                </div>
+            </div>
+            <div class="card text-center bg-light border-warning">
+                <div class="card-header">
+                    Casino
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">(earns/takes 0-50 gold)</h5>
+                    <form action="/process_money" method="POST">
+                        <input type="hidden" name="building" value="casino" />
+                        <input type="submit" class="btn btn-success"value="Find Gold!"/>
+                    </form>   
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Activity: 3 clicks ago</small>
+                </div>
+            </div>
+        </div> <!-- End of card deck -->
+        <div class="row">
+            <form class="activity">
+                <div class="form-group col-sm-12">
+                    <label for="Activity">Activities:</label><br>
+                    <div class="activities form-control ">
+                        {% for class, activity in acts %}
+                            <p class="mb-0 mt-0 pb-0 pt-0 {{ class }}">{{ activity }}</p> 
+                        {% endfor %}
+                    </div>
+                </div>
+            </form>
+        </div>       
+    </div> <!-- End of container -->
+</body>
+</html>

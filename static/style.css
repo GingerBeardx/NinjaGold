@@ -1,0 +1,16 @@
+container {
+    box-shadow: 2px 0px 15px black;
+}
+.activities {
+    height: 300px;
+    width: 1024px;
+    overflow: scroll;
+}
+
+.red {
+    color: red;
+}
+
+.green{
+    color: green;
+}
